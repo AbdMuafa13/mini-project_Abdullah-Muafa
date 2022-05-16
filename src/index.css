@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Nunito-Sans', sans-serif;
+  height: 100vh;
+  background: #fafcff;
+}
+
+.logo-app {
+  font-weight: 700;
+  color: #1c232d;
+}
+
+.big-title {
+  font-weight: 700;
+  font-size: 72px;
+  color: #1c232d;
+}
+
+.menu {
+  width: 250px;
+  height: 100vh;
+}
+
+#close {
+  margin-top: 1em;
+}
+
+.bi.bi-x-lg {
+  color: white;
+}
+
+.about-menu {
+  min-height: 100vh;
+}
+
+.description {
+  color: #5e5f65;
+}
+
+.not-found {
+  height: 100vh;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  display: inline;
+}
+
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+/* Navbar Style */
+.customNav {
+  /* background-color: #ffffff !important; */
+  padding: 0.9rem 5rem !important;
+  box-shadow: 0 5px 3px 0 rgba(36, 117, 71, 0.4);
+  font-family : 'Poppins', sans-serif;
+}
+
+.navBrand {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.nav-link.active {
+  color: #066322 !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #066322 !important;
+}
+
+.nav-link-button {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.nav-link-button:hover {
+  color: #6cc98b !important;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+}
+
+/* End of Navbar Style */
+
+/* Hero Section */
+.carousel-section {
+  padding-top: 5rem;
+}
+
+.main-title-carousel {
+  text-shadow: 5px 5px 4px rgba(47, 47, 47, 0.72);
+  font-family : 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.description-title-carousel {
+  font-family : 'Poppins', sans-serif;
+  text-shadow: 5px 5px 4px rgba(47, 47, 47, 0.72);
+  font-size: 1rem;
+  font-weight: 300;
+}
+/* End of Hero Section */
+
+/* Section 1 */
+.section1-left {
+  padding-top: 8rem;
+}
+
+.title-selamat-datang,
+.title-rekomendasi-wisata {
+  font-family : 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #066322;
+}
+
+.sub-title-selamat-datang {
+  font-size: 2.65rem;
+  font-weight: 800;
+  text-shadow: 1px 1px 1px rgba(47, 47, 47, 0.72);
+}
+
+.deskripsi-selamat-datang {
+  font-size: 0.938rem;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+}
+
+.button-eksplore {
+  border-radius: 2em !important;
+  padding: 0.5em 2em !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  transition: 0.5s ease !important;
+}
+
+.button-eksplore:hover {
+  color: #066322;
+  border: 1px solid #066322;
+  background-color: transparent;
+}
+
+.img-thumbnail {
+  max-width: 80% !important;
+  margin-left: 5rem;
+}
+/* End of Section 1 */
+
+/* Section 2 */
+.section-2 {
+  background-color: #f3f3f3;
+}
+
+.sub-titile-rekomendasi-wisata {
+  font-size: 2.65rem;
+  font-weight: 800;
+  text-shadow: 1px 1px 1px rgba(47, 47, 47, 0.72);
+}
+
+.deskripsi-rekomendasi-wisata {
+  font-size: 0.938rem;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+}
+/* End of Section 2 */
