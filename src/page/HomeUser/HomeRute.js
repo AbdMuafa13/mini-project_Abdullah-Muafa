@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
 
 // Images
-import Image1 from "../assets/images/slide1.png";
-import Image2 from "../assets/images/slide2.png";
-import Image3 from "../assets/images/slide3.png";
+import Image1 from "../../assets/images/ANGKOT/banner_wisata/lawangsurken.png";
+import Image2 from "../../assets/images/ANGKOT/banner_wisata/grandgarden.png";
+import Image3 from "../../assets/images/ANGKOT/banner_wisata/airmancur.png";
 
 import { gql, useQuery, useLazyQuery, useMutation } from "@apollo/client"
-import LoadingSvg from '../components/LoadingSvg';
+import LoadingSvg from '../../components/LoadingSvg';
 import { Link } from 'react-router-dom';
 
 const GetRute = gql`
@@ -18,6 +18,7 @@ query MyQuery {
     nomorangkot
     namarute
     hargarute
+    gambar
   }
 }`;
 
@@ -28,6 +29,7 @@ query MyQuery($nomorangkot: String!) {
       nomorangkot
       namarute
       hargarute
+      gambar
     }
   }`;
 
@@ -72,47 +74,6 @@ export default function HomeRute() {
     useEffect(() => {
       console.log("ini isInitialQuery", isInitialQuery);
     }, [isInitialQuery]);
-    
-    // const [nomorangkot, setNomorAngkot] = useState();
-    // const [namarute, setNamaRute] = useState();
-    // const [hargarute, setHargaRute] = useState();
-      
-    // if(loading || loadingNomorAngkot){
-    //   return <LoadingSvg/>
-    // }
-  
-    // if(error){
-    //   console.log(error)
-    //   return null
-    // }
-    
-    // const onChangeRute = (e) => {
-    //     if (e.target) {
-    //       setRuteAngkot(e.target.value);
-    //     }
-    //   };
-    
-    //   const handleSearch = (e) => {
-    //     e.preventDefault();
-    //     if (ruteangkot === "") {
-    //       setNomorAngkot(true);
-    //     } else {
-    //       setNomorAngkot(false);
-    //       getNomorAngkot({ variables: { nomorangkot: `%${ruteangkot}%` } });
-    //     }
-    //   };
-    
-    //   useEffect(() => {
-    //     console.log("ini loading", loading);
-    //   }, [loading]);
-    
-    //   useEffect(() => {
-    //     console.log("ini loadingNomorAngkot", loadingNomorAngkot);
-    //   }, [loadingNomorAngkot]);
-    
-    //   useEffect(() => {
-    //     console.log("ini nomorangkot", nomorangkot);
-    //   }, [nomorangkot]);
 
         return (
             <div>
@@ -219,29 +180,6 @@ export default function HomeRute() {
                                     </h3>
                                 </p>
                             </div>
-                            {/* search */}
-                            {/* <div className="section-section mb-4">
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <input
-                                        onChange={onChangeRute}
-                                        value={ruteangkot}
-                                        autoFocus
-                                        type="text"
-                                        className="form-control searchbyname-input"
-                                        />
-                                    </div>
-                                    <div className="col-md-2">
-                                        <button
-                                        type="submit"
-                                        className="btn btn-outline-success btn-search"
-                                        onClick={handleSearch}
-                                        >
-                                        Search
-                                        </button>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div class="container-fluid">
                                 <div class="col-md-6 col-lg-4 mx-auto">
                                     <input class="form-control me-2" type="search" onChange={onChangeRute}
@@ -249,7 +187,6 @@ export default function HomeRute() {
                                     <div className='d-flex justify-content-center mt-4 col-lg-12'>
                                         <button className="btn btn-outline-success me-2" onClick={handleSearch}
                                         value={ruteangkot} type="submit">Search<i class="bi bi-search ms-1"></i></button>
-                                        {/* <button className="btn btn-outline-danger" type="submit">Reset<i class="bi bi-x ms-1 mt-1"></i> </button> */}
                                     </div>
                                 </div>
                             </div>
@@ -270,24 +207,20 @@ export default function HomeRute() {
                             <div className="row row-cols-1 row-cols-md-3">
                                 {data?.rute.map((value, valueIdx) => (
                                 <div className="col mb-4" key={valueIdx}>
-                                    <div className="card card-wista">
-                                    {/* <img
+                                    <div className="card card-wista shadow" style={{width:"60%", height:"100%"}}>
+                                    <img
                                         src={value.gambar}
-                                        className="card-img-top img-wisata"
-                                        alt="Wisata Alam"
-                                    /> */}
+                                        className="card-img-top"
+                                        alt="Angkutan Kota"
+                                    />
                                     <div className="card-body">
                                         <h5 className="card-title">
-                                        {/* <Link
-                                            to={`/wisata/detailwisata/${value.id}`}
-                                            className="link-title-wisata"
-                                        >
-                                            {value.namarute}
-                                        </Link> */}
                                         {value.nomorangkot}
                                         </h5>
                                         <p className="card-text text-justify">
                                         {value.namarute.substr(0, 100)}
+                                        <br />
+                                        Rp.{value.hargarute}
                                         </p>
                                     </div>
                                     </div>
@@ -305,8 +238,12 @@ export default function HomeRute() {
                                 <div className="row row-cols-1 row-cols-md-3">
                                 {dataByRute?.rute.map((value) => (
                                     <div className="col mb-4" key={value.id}>
-                                        <div className="card card-wista">
-                                            
+                                        <div className="card card-wisata">
+                                        {/* <img
+                                            src={value.gambar}
+                                            className="card-img-top img-wisata"
+                                            alt="Wisata Alam"
+                                        /> */}
                                             <div className="card-body">
                                             <h5 className="card-title">
                                                 

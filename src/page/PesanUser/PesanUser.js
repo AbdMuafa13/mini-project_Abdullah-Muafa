@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import DescriptionAbout from '../components/DescriptionAbout';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import LoadingSvg from '../components/LoadingSvg';
+import DescriptionAbout from '../../components/DescriptionAbout';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import LoadingSvg from '../../components/LoadingSvg';
 
 import { gql, useQuery, useMutation } from "@apollo/client"
 import Swal from "sweetalert2";

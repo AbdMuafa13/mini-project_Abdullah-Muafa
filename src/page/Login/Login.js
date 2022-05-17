@@ -26,7 +26,7 @@ export default function Login() {
       if (data?.auth.length === 1) {
         console.log("data", data);
         cookies.set("auth", true, {path: "/login"});
-        return navigate("/home");
+        return navigate("/home-admin");
       }
     }, [data]);
 
@@ -60,7 +60,7 @@ export default function Login() {
               <div className="form-group mt-2">
                 <input type="password" name="password" id="password" className="form-control input-lg" placeholder="Password" onChange={handleChangePassword}/>
               </div>
-              
+
               <hr className="colorgraph"/>
               <div className="row">
               {data && <h3>Gagal</h3>}
