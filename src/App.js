@@ -1,16 +1,18 @@
 import './App.css';
 
-import RuteAngkot from './page/RuteAngkot';
-import PesanUser from './page/PesanUser';
-import Login from './page/Login';
+import RuteAngkot from './page/RuteAngkot/RuteAngkot';
+import PesanUser from './page/PesanUser/PesanUser';
+import Login from './page/Login/Login';
 import NotFound from './page/NotFound';
-import PrivateRoute from "./components/PrivateRoute";
-import HomeRute from './page/HomeRute';
-import Home from './page/admin/Home';
+
+import HomeRute from './page/HomeUser/HomeRute';
+import Home from './page/admin/HomeAdmin/Home';
 import SaranAdmin from './page/admin/Saran/SaranAdmin';
-import TambahRute from './page/admin/Rute/TambahRute';
-import EditRute from './page/admin/Rute/EditRute';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TambahRute from './page/admin/TambahRute/TambahRute';
+import EditRute from './page/admin/EditRute/EditRute';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
@@ -21,17 +23,14 @@ function App() {
           <Route path="/" element={<HomeRute />} />
           <Route path="/rute-angkot" element={<RuteAngkot />} />
           <Route path="/pesan" element={<PesanUser />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/tambah-rute" element={<TambahRute />} />
           <Route exact path="/login" element={<Login />} />
           <Route element={ <PrivateRoute /> }>
-          <Route path="/edit-rute" element={<EditRute />} />
-          <Route path="/home" element={<Home />} />
-          
-          <Route path="/saran-masukkan" element={<SaranAdmin />} />
-            {/* <Route path="/tambah-rute" element={<TambahRute />} />
-            <Route path="/saran-masukkan" element={<SaranAdmin />} /> */}
+            <Route path="/home-admin" element={<Home />} />
+            <Route path="/home/tambah-rute" element={<TambahRute />} />
+            <Route path="/home/edit-rute/:id" element={<EditRute />} />
+            <Route path="/saran-masukkan" element={<SaranAdmin />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

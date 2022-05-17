@@ -1,12 +1,13 @@
 import React, { Component, useState, useEffect } from 'react'
 import Sidebar from '../../../components/Sidebar'
-import { gql, useQuery, useLazyQuery } from "@apollo/client"
+import { gql, useQuery, useMutation } from "@apollo/client"
 import LoadingSvg from '../../../components/LoadingSvg'
 import SaranKesan from '../../../components/SaranKesan'
+import Swal from "sweetalert2";
 
 const GetSaran = gql`
 query MyQuery {
-  pesan {
+  pesan(order_by: {id: asc}) {
     id
     email
     nama
@@ -14,14 +15,33 @@ query MyQuery {
   }
 }`
 
+const DeleteSaran = gql`
+mutation MyMutation($id: Int!) {
+  delete_pesan_by_pk(id: $id) {
+    id
+  }
+}
+`
+
 export default function SaranAdmin() {
-  const  {data, loading, error} = useQuery(GetSaran)
+  const  {data, loading, error, refetch} = useQuery(GetSaran)
+  const [deleteSaran, { loading: loadingDeleteSaran }] = useMutation(
+    DeleteSaran,
+    {
+      onCompleted: (data) => {
+        refetch();
+      },
+      onError: (error) => {
+        console.log("Error in mutation delete", { error });
+      },
+    }
+  );
   const [saran, setSaran] = useState([]);
   const [email, setEmail] = useState();
   const [nama, setNama] = useState();
   const [pesan, setPesan] = useState();
 
-  if(loading){
+  if(loading || loadingDeleteSaran){
     return <LoadingSvg/>
   }
 
@@ -30,24 +50,28 @@ export default function SaranAdmin() {
     return null;
   }
 
-  const onChangeEmail = (e) => {
-    if (e.target) {
-      setEmail(e.target.value);
-    }
-  }
-
-  const onSubmitSaran = (e) => {
-    e.preventDefault();
-    setSaran((prev) => [...prev, {email, nama, pesan}]);
-    setEmail('');
-    setNama('');
-    setPesan('');
+  const onDeleteSaran = (idx) => {
+    Swal.fire({
+      title: "Yakin hapus data ini?",
+      text: "Kamu tidak dapat mengembalikan data yang telah dihapus!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteSaran({
+          variables: {
+            id: idx,
+          },
+        });
+        Swal.fire("Berhasil!", "Data berhasil dihapus.", "success");
+      } else {
+        Swal.fire("Batal", "Data batal dihapus", "error");
+      }
+    });
   };
-
-  const onDeleteSaran = (id) => {
-    const newSaran = saran.filter((_, i) => i !== id);
-    setSaran(newSaran);
-  }; 
 
 
   return (
@@ -72,11 +96,11 @@ export default function SaranAdmin() {
                                 </tr>
                             </thead>
                             <tbody>
-                                    {data?.pesan.map((v, i) => (
+                                    {data?.pesan.map((v) => (
                                         <SaranKesan
-                                            key={i}
-                                            id={i}
-                                            onDeleteSaran={() => onDeleteSaran(i)}
+                                            key={v.id}
+                                            id={v.id}
+                                            onDeleteSaran={() => onDeleteSaran(v.id)}
                                             email={v.email}
                                             nama={v.nama}
                                             pesan={v.pesan}

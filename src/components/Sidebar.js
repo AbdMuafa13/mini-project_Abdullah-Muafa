@@ -47,13 +47,13 @@ const Sidebar = () => {
               <div className="menu-lists pt-4">
                 <ul className="list-unstyled d-flex flex-column gap-3">
                   <li>
-                    <Link to="/home" className="text-white text-decoration-none fw-bold">
+                    <Link to="/home-admin" className="text-white text-decoration-none fw-bold">
                     <i class="bi bi-house-door me-1"></i>
                       Home
                     </Link>
                   </li>
                   <li>
-                    <Link to="/tambah-rute" className="text-white text-decoration-none fw-bold">
+                    <Link to="/home/tambah-rute" className="text-white text-decoration-none fw-bold">
                     <i class="bi bi-cursor me-1"></i>
                       Tambah Rute
                     </Link>
